@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Main</title>
+</head>
+<body>
+<h1>Welcome to EarthSaverAI!</h1>
+
+<form action="{% url 'plot_predicted_data' %}" method="POST">
+        {% csrf_token %}
+        <label for="country">Select Country:</label>
+        <select name="country" id="country">
+            {% for country_name in country_names %}
+                <option value="{{ country_name }}">{{ country_name }}</option>
+            {% endfor %}
+        </select>
+        <br>
+        <label for="year">Select Year:</label>
+        <select name="year" id="year">
+            {% for year in years %}
+                <option value="{{ year }}">{{ year }}</option>
+            {% endfor %}
+        </select>
+        <br>
+        <input type="submit" value="Submit">
+    </form>
+</body>
+</html>
